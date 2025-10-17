@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - STYLELESS</title>
+    <!-- Bootstrap 5 CSS via CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='final_project/image5.png') }}">
+</head>
+
+<body>
+    <!-- Header (reuse your main navbar if needed) -->
+    {% include 'front/header.html' %}
+
+    <!-- Checkout Banner -->
+    <!-- <div class="container-fluid shop-banner-bg py-5 mt-5">
+        <div class="container text-center py-5">
+            <h1 class="display-4 fw-bold text-white mb-4">Checkout</h1>
+            <p class="lead text-white-50 mb-4">Complete your order and get ready to unleash your style!</p>
+        </div>
+    </div> -->
+
+    <!-- Checkout Form & Order Summary -->
+    <div class="container py-5" style="margin-top: 50px;">
+        <div class="row g-5">
+            <!-- Order Summary -->
+            <div class="col-lg-5 order-lg-2">
+                <div class="row">
+                    <div class="card shadow-sm ">
+                        <div class="card-header bg-light fw-bold">Order Summary</div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-4 text-center">Your Order</h5>
+                            <div class="order-items mb-3">
+                                <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
+                                    <img src="{{ url_for('static', filename='Men/hoody/Black/main.jpg') }}" alt="Black Hoodie"
+                                        style="width:56px; height:56px; object-fit:cover; border-radius:10px; margin-right:16px;">
+                                    <div class="flex-grow-1">
+                                        <div class="fw-semibold">Black Hoodie</div>
+                                        <div class="text-muted small">Qty: 1</div>
+                                    </div>
+                                    <div class="fw-bold fs-6">$35.00</div>
+                                </div>
+                                <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
+                                    <img src="{{ url_for('static', filename='Lady/Cami Mini Dress/Light Blue/Mini-Dress (main).jpg') }}"
+                                        alt="Cami Mini Dress"
+                                        style="width:56px; height:56px; object-fit:cover; border-radius:10px; margin-right:16px;">
+                                    <div class="flex-grow-1">
+                                        <div class="fw-semibold">Cami Mini Dress</div>
+                                        <div class="text-muted small">Qty: 2</div>
+                                    </div>
+                                    <div class="fw-bold fs-6">$58.00</div>
+                                </div>
+                            </div>
+                            <div class="order-totals">
+                                <div class="d-flex justify-content-between align-items-center py-2">
+                                    <span class="fw-semibold">Subtotal</span>
+                                    <span class="fw-bold">$93.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center py-2">
+                                    <span>Shipping</span>
+                                    <span>$5.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center py-2">
+                                    <span>Tax</span>
+                                    <span>$2.00</span>
+                                </div>
+                                <hr>
+                                <div class="d-flex justify-content-between align-items-center py-2">
+                                    <span class="fs-5 fw-bold text-dark">Total</span>
+                                    <span class="fs-5 fw-bold text-primary">$100.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Checkout Form -->
+            <div class="col-lg-7 order-lg-1">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-light fw-bold">Shipping & Payment</div>
+                    <div class="card-body">
+                        <form>
+                            <h5 class="mb-3 fw-bold">Shipping Information</h5>
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="address" required>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label for="city" class="form-label">City</label>
+                                    <input type="text" class="form-control" id="city" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="zip" class="form-label">ZIP Code</label>
+                                    <input type="text" class="form-control" id="zip" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="country" class="form-label">Country</label>
+                                <select class="form-select" id="country" required>
+                                    <option value="">Select Country</option>
+                                    <option value="us">United States</option>
+                                    <option value="uk">United Kingdom</option>
+                                    <option value="th">Thailand</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <hr>
+                            <h5 class="mb-3 fw-bold">Payment Method</h5>
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard"
+                                        checked>
+                                    <label class="form-check-label" for="creditCard">
+                                        Credit Card
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="paypal">
+                                    <label class="form-check-label" for="paypal">
+                                        PayPal
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="cod">
+                                    <label class="form-check-label" for="cod">
+                                        Cash on Delivery
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cardNumber" class="form-label">Card Number</label>
+                                <input type="text" class="form-control" id="cardNumber" required>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label for="cardExpiry" class="form-label">Expiry Date</label>
+                                    <input type="text" class="form-control" id="cardExpiry" placeholder="MM/YY"
+                                        required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="cardCVC" class="form-label">CVC</label>
+                                    <input type="text" class="form-control" id="cardCVC" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 py-2 mt-3">Place Order</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qQ2iX+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <!-- Your custom JS -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    <!-- Footer (reuse your main footer if needed) -->
+    {% include 'front/footer.html' %}
+</body>
+
+</html>

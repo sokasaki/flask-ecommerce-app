@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - STYLELESS</title>
+    <!-- Bootstrap 5 CSS via CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cart.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='final_project/image5.png') }}">
+</head>
+
+<body>
+    <!-- Header -->
+
+    {% include 'front/header.html' %}
+    <!-- Cart Banner -->
+    <!-- <div class="container-fluid shop-banner-bg py-5 mt-5"
+        style="background-image: url('../final_project/banner-2.jpg'); background-size: cover; background-position: center;">
+        <div class="container text-center py-5">
+            <h1 class="display-4 fw-bold text-white mb-4">Your Cart</h1>
+            <p class="lead text-white-50 mb-4">Review your selected items before checkout.</p>
+        </div>
+    </div> -->
+
+    <!-- Cart Section -->
+    <div class="container py-5" style="margin-top: 50px;">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div class="card cart-glass border-0 shadow-sm p-4">
+                    <h2 class="fw-bold mb-4 text-center">Shopping Cart</h2>
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Product</th>
+                                    <th scope="col" class="text-center">Price</th>
+                                    <th scope="col" class="text-center">Quantity</th>
+                                    <th scope="col" class="text-center">Total</th>
+                                    <th scope="col" class="text-center">Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Example items, replace with dynamic JS if needed -->
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="../final_project/Men/hoody/Black/main.jpg" alt="Black Hoodie"
+                                                style="width:56px; height:56px; object-fit:cover; border-radius:10px; margin-right:16px;">
+                                            <span class="fw-semibold">Black Hoodie</span>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">$35.00</td>
+                                    <td class="text-center">
+                                        <input type="number" class="form-control text-center" value="1" min="1"
+                                            style="width:70px;">
+                                    </td>
+                                    <td class="text-center fw-bold">$35.00</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-outline-danger btn-sm"><i
+                                                class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="../final_project/Lady/Cami Mini Dress/Light Blue/Mini-Dress (main).jpg"
+                                                alt="Cami Mini Dress"
+                                                style="width:56px; height:56px; object-fit:cover; border-radius:10px; margin-right:16px;">
+                                            <span class="fw-semibold">Cami Mini Dress</span>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">$29.00</td>
+                                    <td class="text-center">
+                                        <input type="number" class="form-control text-center" value="2" min="1"
+                                            style="width:70px;">
+                                    </td>
+                                    <td class="text-center fw-bold">$58.00</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-outline-danger btn-sm"><i
+                                                class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-4 flex-wrap">
+                        <a href="shop.html" class="btn btn-outline-primary mb-2 mb-md-0"><i
+                                class="fa fa-arrow-left me-2"></i>Continue Shopping</a>
+                        <div class="cart-summary text-end">
+                            <div class="mb-2"><span class="fw-semibold">Subtotal:</span> <span
+                                    class="fw-bold">$93.00</span></div>
+                            <div class="mb-2"><span>Shipping:</span> <span>$5.00</span></div>
+                            <div class="mb-2"><span>Tax:</span> <span>$2.00</span></div>
+                            <hr>
+                            <div class="fs-5 fw-bold text-primary">Total: $100.00</div>
+                            <a href="check-out.html" class="btn btn-primary btn-lg mt-3">Proceed to Checkout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    {% include 'front/footer.html' %}
+    <!-- Bootstrap 5 JS via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qQ2iX+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <!-- Your custom JS -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
