@@ -268,6 +268,40 @@
 
                 // Validate form
                 if (checkoutForm.checkValidity()) {
+                    // Calculate totals
+                    const subtotal = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
+                    const shipping = 5.00;
+                    const tax = 2.00;
+                    const total = subtotal + shipping + tax;
+
+                    // Create order object
+                    const orderData = {
+                        id: Date.now(),
+                        date: new Date().toISOString(),
+                        items: [...cart],
+                        customerInfo: {
+                            firstName: document.getElementById('firstName').value,
+                            lastName: document.getElementById('lastName').value,
+                            email: document.getElementById('email').value,
+                            phone: document.getElementById('phone').value,
+                            address: document.getElementById('address').value,
+                            city: document.getElementById('city').value,
+                            zip: document.getElementById('zip').value,
+                            country: document.getElementById('country').value
+                        },
+                        paymentMethod: document.querySelector('input[name="paymentMethod"]:checked').id,
+                        subtotal: subtotal,
+                        shipping: shipping,
+                        tax: tax,
+                        total: total,
+                        status: 'Processing'
+                    };
+
+                    // Save order to localStorage
+                    let orders = JSON.parse(localStorage.getItem('orders')) || [];
+                    orders.unshift(orderData); // Add to beginning
+                    localStorage.setItem('orders', JSON.stringify(orders));
+
                     // Show success modal
                     const successModal = new bootstrap.Modal(document.getElementById('successModal'));
                     successModal.show();

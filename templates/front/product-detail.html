@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Black Hoodie - STYLELESS</title>
-    {#    <link rel="stylesheet" href="../bootstrap-5.0.2-dist/css/bootstrap.css">#}
+    {#
+    <link rel="stylesheet" href="../bootstrap-5.0.2-dist/css/bootstrap.css">#}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='final_project/image5.png') }}">
     <style>
@@ -239,161 +240,199 @@
 </head>
 
 <body>
-{% include 'front/header.html' %}
+    {% include 'front/header.html' %}
 
-{# ensure `product` always defined and build an images list with sensible fallback #}
-{% set product = product or {} %}
-{% set images = product.get('images') if product.get('images') else ([product.get('image')] if product.get('image') else [url_for('static', filename='final_project/Men/hoody/Black/main.jpg')]) %}
+    {# ensure `product` always defined and build an images list with sensible fallback #}
+    {% set product = product or {} %}
+    {% set images = product.get('images') if product.get('images') else ([product.get('image')] if product.get('image')
+    else [url_for('static', filename='final_project/Men/hoody/Black/main.jpg')]) %}
 
-<!-- Main Content -->
-<div class="container product-detail-wrapper">
-    <!-- Breadcrumb -->
-    <nav aria-label="breadcrumb" class="mb-4">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ url_for('home') }}" style="color:#a07c5f;">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ url_for('shop') }}" style="color:#a07c5f;">Shop</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ product.get('title', 'Product') }}</li>
-        </ol>
-    </nav>
+    <!-- Main Content -->
+    <div class="container product-detail-wrapper">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('home') }}" style="color:#a07c5f;">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ url_for('shop') }}" style="color:#a07c5f;">Shop</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ product.get('title', 'Product') }}</li>
+            </ol>
+        </nav>
 
-    <div class="row">
-        <!-- Product Images -->
-        <div class="col-lg-6 col-md-6">
-            <div class="product-images">
-                <img src="{{ images[0] }}" alt="{{ product.get('title','Product') }}" class="main-image" id="mainImage">
-                <div class="thumbnail-images">
-                    {% for img in images %}
+        <div class="row">
+            <!-- Product Images -->
+            <div class="col-lg-6 col-md-6">
+                <div class="product-images">
+                    <img src="{{ images[0] }}" alt="{{ product.get('title','Product') }}" class="main-image"
+                        id="mainImage">
+                    <div class="thumbnail-images">
+                        {% for img in images %}
                         <img src="{{ img }}" alt="{{ product.get('title','Product') }}"
-                             class="thumbnail {% if loop.first %}active{% endif %}" onclick="changeImage(this)">
-                    {% endfor %}
+                            class="thumbnail {% if loop.first %}active{% endif %}" onclick="changeImage(this)">
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Product Info -->
-        <div class="col-lg-6 col-md-6">
-            <div class="product-info">
-                <h1 class="product-title">Black Hody</h1>
-                <div class="product-price">${{ '%.2f'|format(product.get('price', 0)) }}</div>
-                <div class="product-description">
-                    <p>{{ product.get('description', 'No description available.') }}</p>
-                    <p><strong>Material:</strong> 45% Cotton, 50% Polyester, 5% Spandex</p>
-                    <p><strong>Care Instructions:</strong> Machine wash cold, tumble dry low</p>
-                </div>
-
-                <!-- Size Selector -->
-                <div class="size-selector">
-                    <h6 class="fw-bold mb-3">Size</h6>
-                    <div class="size-option" onclick="selectSize(this)">XS</div>
-                    <div class="size-option selected" onclick="selectSize(this)">S</div>
-                    <div class="size-option" onclick="selectSize(this)">M</div>
-                    <div class="size-option" onclick="selectSize(this)">L</div>
-                    <div class="size-option" onclick="selectSize(this)">XL</div>
-                    <div class="size-option" onclick="selectSize(this)">XXL</div>
-                </div>
-
-                <!-- Color Selector -->
-                <div class="color-selector">
-                    <h6 class="fw-bold mb-3">Color</h6>
-                    <div class="color-option selected" style="background-color: #000;" onclick="selectColor(this)"
-                         title="Black"></div>
-                    <div class="color-option" style="background-color: #fff; border: 1px solid #ddd;"
-                         onclick="selectColor(this)" title="White"></div>
-                    <div class="color-option" style="background-color: #8B4513;" onclick="selectColor(this)"
-                         title="Brown"></div>
-                </div>
-
-                <!-- Quantity Selector -->
-                <div class="quantity-selector">
-                    <h6 class="fw-bold me-3">Quantity</h6>
-                    <div class="quantity-btn" onclick="decreaseQuantity()">
-                        <i class="fa fa-minus"></i>
+            <!-- Product Info -->
+            <div class="col-lg-6 col-md-6">
+                <div class="product-info">
+                    <h1 class="product-title">{{ product.get('title', 'Product') }}</h1>
+                    <div class="product-price">${{ '%.2f'|format(product.get('price', 0)) }}</div>
+                    <div class="product-description">
+                        <p>{{ product.get('description', 'No description available.') }}</p>
+                        <p><strong>Material:</strong> 45% Cotton, 50% Polyester, 5% Spandex</p>
+                        <p><strong>Care Instructions:</strong> Machine wash cold, tumble dry low</p>
                     </div>
-                    <input type="number" class="quantity-input" value="1" min="1" max="10" id="quantityInput">
-                    <div class="quantity-btn" onclick="increaseQuantity()">
-                        <i class="fa fa-plus"></i>
+
+                    <!-- Size Selector -->
+                    <div class="size-selector">
+                        <h6 class="fw-bold mb-3">Size</h6>
+                        <div class="size-option" onclick="selectSize(this)">XS</div>
+                        <div class="size-option selected" onclick="selectSize(this)">S</div>
+                        <div class="size-option" onclick="selectSize(this)">M</div>
+                        <div class="size-option" onclick="selectSize(this)">L</div>
+                        <div class="size-option" onclick="selectSize(this)">XL</div>
+                        <div class="size-option" onclick="selectSize(this)">XXL</div>
                     </div>
-                </div>
 
-                <!-- Action Buttons -->
-                <button class="btn btn-add-cart" onclick="addToCart()">
-                    <i class="fa fa-shopping-cart me-2"></i>Add to Cart
-                </button>
-                <button class="btn btn-wishlist">
-                    <i class="fa fa-heart me-2"></i>Add to Wishlist
-                </button>
+                    <!-- Color Selector -->
+                    <div class="color-selector">
+                        <h6 class="fw-bold mb-3">Color</h6>
+                        <div class="color-option selected" style="background-color: #000;" onclick="selectColor(this)"
+                            title="Black"></div>
+                        <div class="color-option" style="background-color: #fff; border: 1px solid #ddd;"
+                            onclick="selectColor(this)" title="White"></div>
+                        <div class="color-option" style="background-color: #8B4513;" onclick="selectColor(this)"
+                            title="Brown"></div>
+                    </div>
 
-                <!-- Product Features -->
-                <div class="product-features">
-                    <!-- features unchanged -->
+                    <!-- Quantity Selector -->
+                    <div class="quantity-selector">
+                        <h6 class="fw-bold me-3">Quantity</h6>
+                        <div class="quantity-btn" onclick="decreaseQuantity()">
+                            <i class="fa fa-minus"></i>
+                        </div>
+                        <input type="number" class="quantity-input" value="1" min="1" max="10" id="quantityInput">
+                        <div class="quantity-btn" onclick="increaseQuantity()">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <button class="btn btn-add-cart" onclick="addToCart()">
+                        <i class="fa fa-shopping-cart me-2"></i>Add to Cart
+                    </button>
+                    <button class="btn btn-wishlist">
+                        <i class="fa fa-heart me-2"></i>Add to Wishlist
+                    </button>
+
+                    <!-- Product Features -->
+                    <div class="product-features">
+                        <!-- features unchanged -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Footer -->
-<footer class="container-fluid py-4 footer-bg mt-5">
-    <div class="container text-center">
-        <p class="text-muted small mb-0" style="color:#fff !important;">&copy; 2025 STYLELESS. All rights reserved.</p>
-    </div>
-</footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <!-- Footer -->
+    <footer class="container-fluid py-4 footer-bg mt-5">
+        <div class="container text-center">
+            <p class="text-muted small mb-0" style="color:#fff !important;">&copy; 2025 STYLELESS. All rights reserved.
+            </p>
+        </div>
+    </footer>
 
-<script src="../bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    /* expose safe product data to JS */
-    const productData = {{ product | tojson | safe }};
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script>
+        /* expose safe product data to JS */
+        const productDetails = {{ product | tojson | safe }};
 
-    function changeImage(thumbnail) {
-        document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
-        if (!thumbnail) return;
-        thumbnail.classList.add('active');
-        const main = document.getElementById('mainImage');
-        if (main) main.src = thumbnail.src;
-    }
+        function changeImage(thumbnail) {
+            document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
+            if (!thumbnail) return;
+            thumbnail.classList.add('active');
+            const main = document.getElementById('mainImage');
+            if (main) main.src = thumbnail.src;
+        }
 
-    function selectSize(sizeElement) {
-        document.querySelectorAll('.size-option').forEach(size => size.classList.remove('selected'));
-        if (sizeElement) sizeElement.classList.add('selected');
-    }
+        function selectSize(sizeElement) {
+            document.querySelectorAll('.size-option').forEach(size => size.classList.remove('selected'));
+            if (sizeElement) sizeElement.classList.add('selected');
+        }
 
-    function selectColor(colorElement) {
-        document.querySelectorAll('.color-option').forEach(color => color.classList.remove('selected'));
-        if (colorElement) colorElement.classList.add('selected');
-    }
+        function selectColor(colorElement) {
+            document.querySelectorAll('.color-option').forEach(color => color.classList.remove('selected'));
+            if (colorElement) colorElement.classList.add('selected');
+        }
 
-    function increaseQuantity() {
-        const input = document.getElementById('quantityInput');
-        if (!input) return;
-        const current = parseInt(input.value) || 1;
-        const max = parseInt(input.max) || 999;
-        if (current < max) input.value = current + 1;
-    }
+        function increaseQuantity() {
+            const input = document.getElementById('quantityInput');
+            if (!input) return;
+            const current = parseInt(input.value) || 1;
+            const max = parseInt(input.max) || 999;
+            if (current < max) input.value = current + 1;
+        }
 
-    function decreaseQuantity() {
-        const input = document.getElementById('quantityInput');
-        if (!input) return;
-        const current = parseInt(input.value) || 1;
-        const min = parseInt(input.min) || 1;
-        if (current > min) input.value = current - 1;
-    }
+        function decreaseQuantity() {
+            const input = document.getElementById('quantityInput');
+            if (!input) return;
+            const current = parseInt(input.value) || 1;
+            const min = parseInt(input.min) || 1;
+            if (current > min) input.value = current - 1;
+        }
 
-    function addToCart() {
-        const sizeEl = document.querySelector('.size-option.selected');
-        const colorEl = document.querySelector('.color-option.selected');
-        const size = sizeEl ? sizeEl.textContent.trim() : 'N/A';
-        const color = colorEl ? (colorEl.title || getComputedStyle(colorEl).backgroundColor) : 'N/A';
-        const quantity = parseInt(document.getElementById('quantityInput')?.value) || 1;
-        const title = productData?.title || '{{ product.get("title", "Product") }}';
-        const price = productData?.price ?? {{ product.get('price', 0) }};
+        function addToCart() {
+            const sizeEl = document.querySelector('.size-option.selected');
+            const colorEl = document.querySelector('.color-option.selected');
+            const size = sizeEl ? sizeEl.textContent.trim() : 'N/A';
+            const color = colorEl ? (colorEl.title || getComputedStyle(colorEl).backgroundColor) : 'N/A';
+            const quantity = parseInt(document.getElementById('quantityInput')?.value) || 1;
 
-        alert(`Added to cart:\n${title}\nSize: ${size}\nColor: ${color}\nQuantity: ${quantity}`);
+            // Use productDetails (from JSON) with fallbacks
+            const title = productDetails?.title || '{{ product.get("title", "Product") }}';
+            const price = productDetails?.price || {{ product.get('price', 0)
+        }};
+        const image = productDetails?.image || '{{ product.get("image", "") }}';
+        const id = productDetails?.id || {{ product.get('id', 0) }};
 
+        // Get cart from localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Check if product already exists in cart
+        const existingItem = cart.find(item => item.id === id && item.size === size && item.color === color);
+
+        if (existingItem) {
+            existingItem.quantity = (existingItem.quantity || 1) + quantity;
+        } else {
+            cart.push({
+                id: id,
+                title: title,
+                price: price,
+                image: image,
+                quantity: quantity,
+                size: size,
+                color: color
+            });
+        }
+
+        // Save to localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Update cart count
         const cartCount = document.querySelector('.count');
         if (cartCount) {
-            cartCount.textContent = (parseInt(cartCount.textContent) || 0) + quantity;
+            const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+            cartCount.textContent = totalItems;
         }
-    }
-</script>
+
+        // Show success message
+        alert(`Added to cart:\n${title}\nSize: ${size}\nColor: ${color}\nQuantity: ${quantity}`);
+        }
+    </script>
 </body>
+
 </html>

@@ -7,7 +7,7 @@
     <title>My Account - STYLELESS</title>
     <!-- Bootstrap 5 CSS via CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='final_project/image5.png') }}">
     <style>
@@ -221,104 +221,30 @@
             <!-- Orders Section -->
             <div class="col-lg-9 col-md-7 orders-section">
                 <h3>Orders</h3>
-                <!-- Order Card 1 -->
-                <div class="order-card">
-                    <div class="row w-100">
-                        <div class="col-12 mb-3">
-                            <div class="order-images">
-                                <img src="{{ url_for('static', filename='final_project/Men/hoody/Black/main.jpg') }}"
-                                    alt="Product 1">
-                                <img src="{{ url_for('static', filename='final_project/Lady/Cropped T-shirt With Print/main.jpg') }}"
-                                    alt="Product 2">
-                                <img src="{{ url_for('static', filename='final_project/Lady/Midi Dress/main.jpg') }}"
-                                    alt="Product 3">
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="order-info">
-                                <div class="row">
-                                    <div class="col-6 col-md-3"><strong>Order number</strong><br>7681029</div>
-                                    <div class="col-6 col-md-3"><strong>Shipped date</strong><br>30 March 2025</div>
-                                    <div class="col-6 col-md-3"><strong>Total</strong><br>$78.00</div>
-                                    <div class="col-6 col-md-3"><strong>Status</strong>
-                                        <br>
-                                        <span class="order-status delivered">Delivered</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 mt-3">
-                            <div class="order-actions">
-                                <button class="btn">VIEW ORDER</button>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Orders will be dynamically rendered here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-labelledby="orderDetailsModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="orderDetailsModalLabel">Order Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <!-- Order Card 2 -->
-                <div class="order-card">
-                    <div class="row w-100">
-                        <div class="col-12 mb-3">
-                            <div class="order-images">
-                                <img src="{{ url_for('static', filename='final_project/Lady/Cropped T-shirt With Print/main.jpg') }}"
-                                    alt="Product 1">
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="order-info">
-                                <div class="row">
-                                    <div class="col-6 col-md-3"><strong>Order number</strong><br>7681030</div>
-                                    <div class="col-6 col-md-3"><strong>Shipped date</strong><br>15 March 2025</div>
-                                    <div class="col-6 col-md-3"><strong>Total</strong><br>$35.00</div>
-                                    <div class="col-6 col-md-3"><strong>Status</strong>
-                                        <br>
-                                        <span class="order-status pending">Out for delivery</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 mt-3">
-                            <div class="order-actions">
-                                <button class="btn">TRACK ORDER</button>
-                                <a href="#" class="btn btn-link p-0" style="color:#a07c5f;">View order</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="modal-body" id="orderDetailsContent">
+                    <!-- Order details will be inserted here -->
                 </div>
-                <!-- Order Card 3 -->
-                <div class="order-card">
-                    <div class="row w-100">
-                        <div class="col-12 mb-3">
-                            <div class="order-images">
-                                <img src="{{ url_for('static', filename='final_project/Men/hoody/Black/main.jpg') }}"
-                                    alt="Product 1">
-                                <img src="{{ url_for('static', filename='final_project/Men/Shorts_With_Print/main.jpg') }}"
-                                    alt="Product 2">
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="order-info">
-                                <div class="row">
-                                    <div class="col-6 col-md-3"><strong>Order number</strong><br>7681031</div>
-                                    <div class="col-6 col-md-3"><strong>Order date</strong><br>10 March 2025</div>
-                                    <div class="col-6 col-md-3"><strong>Total</strong><br>$60.00</div>
-                                    <div class="col-6 col-md-3"><strong>Status</strong>
-                                        <br>
-                                        <span class="order-status processing">Processing</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 mt-3">
-                            <div class="order-actions">
-                                <button class="btn">VIEW ORDER</button>
-                                <a href="#" class="btn btn-link p-0 order-status cancel">Cancel order</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
+
     <footer class="container-fluid py-4 footer-bg mt-5">
         <div class="container text-center">
             <p class="text-muted small mb-0" style="color:#fff !important;">&copy; 2025 STYLELESS. All rights reserved.
@@ -327,10 +253,204 @@
     </footer>
     <!-- Bootstrap 5 JS via CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-qQ2iX+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <!-- Your custom JS -->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    <script>
+        // Load orders from localStorage
+        function loadOrders() {
+            return JSON.parse(localStorage.getItem('orders')) || [];
+        }
+
+        // Function to render orders dynamically
+        function renderOrders() {
+            const ordersSection = document.querySelector('.orders-section');
+            const h3 = ordersSection.querySelector('h3');
+            const orders = loadOrders();
+
+            // Clear existing orders
+            ordersSection.innerHTML = '';
+            ordersSection.appendChild(h3);
+
+            if (orders.length === 0) {
+                const emptyMessage = document.createElement('div');
+                emptyMessage.className = 'text-center py-5';
+                emptyMessage.innerHTML = '<p class="text-muted">No orders yet. <a href="{{ url_for("shop") }}">Start shopping!</a></p>';
+                ordersSection.appendChild(emptyMessage);
+                return;
+            }
+
+            orders.forEach(order => {
+                const orderDate = new Date(order.date);
+                const formattedDate = orderDate.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
+
+                const orderCard = document.createElement('div');
+                orderCard.className = 'order-card';
+
+                let imagesHtml = '';
+                if (order.items && order.items.length > 0) {
+                    const maxImages = Math.min(3, order.items.length);
+                    for (let i = 0; i < maxImages; i++) {
+                        imagesHtml += `<img src="${order.items[i].image}" alt="${order.items[i].title}">`;
+                    }
+                    if (order.items.length > 3) {
+                        imagesHtml += `<span class="ms-2">+${order.items.length - 3} more</span>`;
+                    }
+                }
+
+                let actionsHtml = `<button class="btn" onclick="viewOrderDetails('${order.id}')">VIEW ORDER</button>`;
+
+                orderCard.innerHTML = `
+                    <div class="row w-100">
+                        <div class="col-12 mb-3">
+                            <div class="order-images">
+                                ${imagesHtml}
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="order-info">
+                                <div class="row">
+                                    <div class="col-6 col-md-3"><strong>Order number</strong><br>#${order.id}</div>
+                                    <div class="col-6 col-md-3"><strong>Order date</strong><br>${formattedDate}</div>
+                                    <div class="col-6 col-md-3"><strong>Total</strong><br>$${order.total.toFixed(2)}</div>
+                                    <div class="col-6 col-md-3"><strong>Status</strong><br><span class="order-status ${order.status.toLowerCase()}">${order.status}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <div class="order-actions">
+                                ${actionsHtml}
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                ordersSection.appendChild(orderCard);
+            });
+        }
+
+        // View order details function
+        function viewOrderDetails(orderId) {
+            const orders = loadOrders();
+            const order = orders.find(o => o.id == orderId);
+            if (!order) return;
+
+            const orderDate = new Date(order.date).toLocaleString();
+
+            let itemsHtml = '';
+            order.items.forEach(item => {
+                const itemTotal = (item.price * (item.quantity || 1)).toFixed(2);
+                itemsHtml += `
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="${item.image}" alt="${item.title}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 0.5rem; margin-right: 1rem;">
+                                <div>
+                                    <strong>${item.title}</strong><br>
+                                    <small class="text-muted">Size: ${item.size || 'N/A'} | Color: ${item.color || 'N/A'}</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-center">${item.quantity || 1}</td>
+                        <td class="text-end">$${item.price.toFixed(2)}</td>
+                        <td class="text-end">$${itemTotal}</td>
+                    </tr>
+                `;
+            });
+
+            const modalContent = `
+                <div class="mb-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-muted">Order Number</h6>
+                            <p class="fw-bold">#${order.id}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-muted">Order Date</h6>
+                            <p class="fw-bold">${orderDate}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-muted">Status</h6>
+                            <p class="fw-bold"><span class="order-status ${order.status.toLowerCase()}">${order.status}</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-muted">Payment Method</h6>
+                            <p class="fw-bold">${order.paymentMethod}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <h6 class="text-muted mb-3">Customer Information</h6>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Name:</strong> ${order.customerInfo.firstName} ${order.customerInfo.lastName}</p>
+                            <p><strong>Email:</strong> ${order.customerInfo.email}</p>
+                            <p><strong>Phone:</strong> ${order.customerInfo.phone}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Shipping Address:</strong></p>
+                            <p>${order.customerInfo.address}<br>
+                            ${order.customerInfo.city}, ${order.customerInfo.state} ${order.customerInfo.zip}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <h6 class="text-muted mb-3">Order Items</h6>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th class="text-center">Quantity</th>
+                                    <th class="text-end">Price</th>
+                                    <th class="text-end">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${itemsHtml}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 ms-auto">
+                        <table class="table table-sm">
+                            <tr>
+                                <td><strong>Subtotal:</strong></td>
+                                <td class="text-end">$${order.subtotal.toFixed(2)}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Shipping:</strong></td>
+                                <td class="text-end">$${order.shipping.toFixed(2)}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tax:</strong></td>
+                                <td class="text-end">$${order.tax.toFixed(2)}</td>
+                            </tr>
+                            <tr class="table-active">
+                                <td><strong>Total:</strong></td>
+                                <td class="text-end"><strong>$${order.total.toFixed(2)}</strong></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('orderDetailsContent').innerHTML = modalContent;
+            const modal = new bootstrap.Modal(document.getElementById('orderDetailsModal'));
+            modal.show();
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            renderOrders();
+        });
+    </script>
 </body>
 
 </html>
