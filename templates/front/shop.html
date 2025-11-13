@@ -178,11 +178,10 @@
         // Initialize products from server data
         document.addEventListener('DOMContentLoaded', function () {
             // Get initial products from the rendered page
-            allProducts = {{ products | tojson | safe }
-        };
-        currentProducts = [...allProducts];
-        updateResultsCount();
-    });
+            allProducts = {{ products | tojson | safe }};
+            currentProducts = [...allProducts];
+            updateResultsCount();
+        });
 
         // Search functionality
         document.getElementById('searchInput').addEventListener('input', function () {
