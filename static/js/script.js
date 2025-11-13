@@ -105,6 +105,7 @@ function deleteItem(index) {
 function changeQuantity(index, delta) {
   if (cart[index]) {
     cart[index].quantity = Math.max(1, (cart[index].quantity || 1) + delta);
+    saveCart();
     displayCart();
   }
 }
