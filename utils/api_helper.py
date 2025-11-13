@@ -249,7 +249,7 @@ class APIHelper:
                 "price": 22.99,
                 "description": "Comfortable tank top with stylish print. Perfect for summer and workouts. 100% Cotton",
                 "category": "men's clothing",
-                "image": "/static/final_project/Men/Tank_Top_With_ Print/Black/Tank-Top main.jpg",
+                "image": "/static/final_project/Men/Tank_Top_With_ Print/Black/Tank-Topmain.jpg",
                 "rating": {"rate": 4.3, "count": 115}
             },
             {
@@ -258,7 +258,7 @@ class APIHelper:
                 "price": 22.99,
                 "description": "Comfortable tank top with stylish print. Perfect for summer and workouts. 100% Cotton",
                 "category": "men's clothing",
-                "image": "/static/final_project/Men/Tank_Top_With_ Print/Beige/Tank-Top main.jpg",
+                "image": "/static/final_project/Men/Tank_Top_With_ Print/Beige/tt-main.jpg",
                 "rating": {"rate": 4.3, "count": 102}
             },
             {
@@ -285,7 +285,7 @@ class APIHelper:
                 "price": 34.99,
                 "description": "Comfortable athletic shorts with modern print. Perfect for sports and casual wear. 100% Polyester",
                 "category": "men's clothing",
-                "image": "/static/final_project/Men/Shorts_With_Print/navy Blue/short-main.jpg",
+                "image": "/static/final_project/Men/Shorts_With_Print/navy Blue/short-mainb.jpg",
                 "rating": {"rate": 4.4, "count": 138}
             },
             {
@@ -303,7 +303,7 @@ class APIHelper:
                 "price": 39.99,
                 "description": "Classic straight fit shorts for everyday comfort. Premium quality fabric. 98% Cotton 2% Spandex",
                 "category": "men's clothing",
-                "image": "/static/final_project/Men/Straight_Fit Shorts/Dark Green/ss-main.jpg",
+                "image": "/static/final_project/Men/Straight_Fit Shorts/Dark Green/Straight-Shorts-(main).jpg",
                 "rating": {"rate": 4.5, "count": 152}
             },
             
