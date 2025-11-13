@@ -1,40 +1,33 @@
-from app import app,render_template,requests,request,jsonify
-# import requests
+from app import app,render_template,request,jsonify
+from utils.api_helper import api_helper
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 @app.get('/shop')
 def shop():
-    try:
-        res = requests.get('https://fakestoreapi.com/products', timeout=10)
-        res.raise_for_status()
-        data = res.json()
-        products = data
-        
-        # Get filter parameters from URL
-        category_filter = request.args.get('category', 'all')
-        search_query = request.args.get('search', '')
-        
-        # Filter products based on parameters
-        if category_filter != 'all':
-            products = [p for p in products if category_filter.lower() in p['category'].lower()]
-        
-        if search_query:
-            products = [p for p in products if search_query.lower() in p['title'].lower() or search_query.lower() in p['category'].lower()]
-    except Exception as e:
-        print(f"Error fetching products: {e}")
-        products = []
+    products = api_helper.get_products()
+    
+    # Get filter parameters from URL
+    category_filter = request.args.get('category', 'all')
+    search_query = request.args.get('search', '')
+    
+    # Filter products based on parameters
+    if category_filter != 'all':
+        products = [p for p in products if category_filter.lower() in p['category'].lower()]
+    
+    if search_query:
+        products = [p for p in products if search_query.lower() in p['title'].lower() or search_query.lower() in p['category'].lower()]
     
     return render_template("front/shop.html", products=products)
 
 @app.route('/api/products/filter')
 def filter_products():
     """API endpoint for filtering products"""
-    try:
-        res = requests.get('https://fakestoreapi.com/products', timeout=10)
-        res.raise_for_status()
-        data = res.json()
-    except Exception as e:
-        print(f"Error fetching products: {e}")
+    data = api_helper.get_products()
+    
+    if not data:
         return jsonify([])
     
     category = request.args.get('category', 'all')

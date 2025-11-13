@@ -1,16 +1,13 @@
 
-from app import app, render_template,requests
+from app import app, render_template
 from flask import request
+from utils.api_helper import api_helper
+import logging
+
+logger = logging.getLogger(__name__)
 
 @app.get('/detail')
 def detail():
-    try:
-        res = requests.get('https://fakestoreapi.com/products', timeout=10)
-        res.raise_for_status()
-        data = res.json()
-        products = data
-    except Exception as e:
-        print(f"Error fetching products: {e}")
-        products = []
+    products = api_helper.get_products()
     product_name = request.args.get('product-title')
     return render_template('front/product-detail.html', module='detail', products=products)
