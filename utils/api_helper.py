@@ -139,80 +139,318 @@ class APIHelper:
     def _get_fallback_products(self) -> List[Dict]:
         """
         Return fallback mock data when API is unavailable
+        Uses images from static/final_project folder
         """
         logger.info("Using fallback mock product data")
         return [
+            # Men's Clothing
             {
                 "id": 1,
-                "title": "Classic White T-Shirt",
-                "price": 29.99,
-                "description": "Premium quality cotton t-shirt with a comfortable fit",
+                "title": "Men's Hoody - Black",
+                "price": 45.99,
+                "description": "T-shirt featuring long sleeves, pocket with embroidery and crew neckline. 45% Cotton 50% Polyester 5% Spandex",
                 "category": "men's clothing",
-                "image": "https://via.placeholder.com/300x400/FFFFFF/000000?text=White+T-Shirt",
+                "image": "/static/final_project/Men/hoody/Black/main.jpg",
                 "rating": {"rate": 4.5, "count": 120}
             },
             {
                 "id": 2,
-                "title": "Slim Fit Jeans",
-                "price": 49.99,
-                "description": "Modern slim fit denim jeans with stretch comfort",
+                "title": "Men's Hoody - White",
+                "price": 45.99,
+                "description": "T-shirt featuring long sleeves, pocket with embroidery and crew neckline. 45% Cotton 50% Polyester 5% Spandex",
                 "category": "men's clothing",
-                "image": "https://via.placeholder.com/300x400/4169E1/FFFFFF?text=Jeans",
-                "rating": {"rate": 4.2, "count": 85}
+                "image": "/static/final_project/Men/hoody/white/hoody(main).jpg",
+                "rating": {"rate": 4.5, "count": 98}
             },
             {
                 "id": 3,
-                "title": "Casual Sneakers",
-                "price": 79.99,
-                "description": "Comfortable everyday sneakers with cushioned sole",
+                "title": "Men's Hoody - Brown",
+                "price": 45.99,
+                "description": "T-shirt featuring long sleeves, pocket with embroidery and crew neckline. 45% Cotton 50% Polyester 5% Spandex",
                 "category": "men's clothing",
-                "image": "https://via.placeholder.com/300x400/000000/FFFFFF?text=Sneakers",
-                "rating": {"rate": 4.7, "count": 200}
+                "image": "/static/final_project/Men/hoody/Brown/hoody(main).jpg",
+                "rating": {"rate": 4.6, "count": 87}
             },
             {
                 "id": 4,
-                "title": "Summer Dress",
-                "price": 59.99,
-                "description": "Light and breezy summer dress perfect for warm weather",
-                "category": "women's clothing",
-                "image": "https://via.placeholder.com/300x400/FFB6C1/000000?text=Summer+Dress",
-                "rating": {"rate": 4.6, "count": 150}
+                "title": "Men's Basketball T-Shirt - Navy Blue",
+                "price": 29.99,
+                "description": "Regular t-shirt featuring short sleeves, with text embroidery at the front and crew neckline. 100% Polyester",
+                "category": "men's clothing",
+                "image": "/static/final_project/Men/Basketbal_T-Shirt_Wit_Print/Navy Blue/T-Shirt main.jpg",
+                "rating": {"rate": 4.3, "count": 145}
             },
             {
                 "id": 5,
-                "title": "Leather Handbag",
-                "price": 89.99,
-                "description": "Elegant leather handbag with multiple compartments",
-                "category": "women's clothing",
-                "image": "https://via.placeholder.com/300x400/8B4513/FFFFFF?text=Handbag",
-                "rating": {"rate": 4.4, "count": 95}
+                "title": "Men's Basketball T-Shirt - Red",
+                "price": 29.99,
+                "description": "Regular t-shirt featuring short sleeves, with text embroidery at the front and crew neckline. 100% Polyester",
+                "category": "men's clothing",
+                "image": "/static/final_project/Men/Basketbal_T-Shirt_Wit_Print/Red/T-Shirt main.jpg",
+                "rating": {"rate": 4.3, "count": 132}
             },
             {
                 "id": 6,
-                "title": "Wireless Earbuds",
-                "price": 99.99,
-                "description": "High-quality wireless earbuds with noise cancellation",
-                "category": "electronics",
-                "image": "https://via.placeholder.com/300x400/000000/FFFFFF?text=Earbuds",
-                "rating": {"rate": 4.8, "count": 300}
+                "title": "Men's T-Shirt - Black",
+                "price": 24.99,
+                "description": "Regular t-shirt featuring short sleeves, with text embroidery at the front and crew neckline. 100% Polyester",
+                "category": "men's clothing",
+                "image": "/static/final_project/Men/T-Shirt/Black/T-Shirt (main).jpg",
+                "rating": {"rate": 4.4, "count": 210}
             },
             {
                 "id": 7,
-                "title": "Smart Watch",
-                "price": 199.99,
-                "description": "Feature-rich smartwatch with fitness tracking",
-                "category": "electronics",
-                "image": "https://via.placeholder.com/300x400/1E90FF/FFFFFF?text=Smart+Watch",
-                "rating": {"rate": 4.5, "count": 180}
+                "title": "Men's T-Shirt - White",
+                "price": 24.99,
+                "description": "Regular t-shirt featuring short sleeves, with text embroidery at the front and crew neckline. 100% Polyester",
+                "category": "men's clothing",
+                "image": "/static/final_project/Men/T-Shirt/White/T-Shirt (main).jpg",
+                "rating": {"rate": 4.4, "count": 198}
             },
             {
                 "id": 8,
-                "title": "Gold Necklace",
-                "price": 149.99,
-                "description": "Elegant gold-plated necklace with pendant",
-                "category": "jewelery",
-                "image": "https://via.placeholder.com/300x400/FFD700/000000?text=Necklace",
-                "rating": {"rate": 4.3, "count": 75}
+                "title": "Men's T-Shirt - Dark Gray",
+                "price": 24.99,
+                "description": "Regular t-shirt featuring short sleeves, with text embroidery at the front and crew neckline. 100% Polyester",
+                "category": "men's clothing",
+                "image": "/static/final_project/Men/T-Shirt/Dark_Gray/T-Shirt (main).jpg",
+                "rating": {"rate": 4.4, "count": 175}
+            },
+            {
+                "id": 9,
+                "title": "Men's T-Shirt With Print - White",
+                "price": 27.99,
+                "description": "Stylish t-shirt with modern print design. Perfect for casual wear. 100% Cotton",
+                "category": "men's clothing",
+                "image": "/static/final_project/Men/T-Shirt_With_Print/White/T-Shirt main.jpg",
+                "rating": {"rate": 4.2, "count": 163}
+            },
+            {
+                "id": 10,
+                "title": "Men's T-Shirt With Print - Light Green",
+                "price": 27.99,
+                "description": "Stylish t-shirt with modern print design. Perfect for casual wear. 100% Cotton",
+                "category": "men's clothing",
+                "image": "/static/final_project/Men/T-Shirt_With_Print/light Green/T-Shirt main.jpg",
+                "rating": {"rate": 4.2, "count": 141}
+            },
+            {
+                "id": 11,
+                "title": "Men's Tank Top With Print - Navy Blue",
+                "price": 22.99,
+                "description": "Comfortable tank top with stylish print. Perfect for summer and workouts. 100% Cotton",
+                "category": "men's clothing",
+                "image": "/static/final_project/Men/Tank_Top_With_ Print/Navy Blue/Tank-Top main.jpg",
+                "rating": {"rate": 4.3, "count": 128}
+            },
+            {
+                "id": 12,
+                "title": "Men's Tank Top With Print - Black",
+                "price": 22.99,
+                "description": "Comfortable tank top with stylish print. Perfect for summer and workouts. 100% Cotton",
+                "category": "men's clothing",
+                "image": "/static/final_project/Men/Tank_Top_With_ Print/Black/Tank-Top main.jpg",
+                "rating": {"rate": 4.3, "count": 115}
+            },
+            {
+                "id": 13,
+                "title": "Men's Tank Top With Print - Beige",
+                "price": 22.99,
+                "description": "Comfortable tank top with stylish print. Perfect for summer and workouts. 100% Cotton",
+                "category": "men's clothing",
+                "image": "/static/final_project/Men/Tank_Top_With_ Print/Beige/Tank-Top main.jpg",
+                "rating": {"rate": 4.3, "count": 102}
+            },
+            {
+                "id": 14,
+                "title": "Men's Shorts With Print - Black",
+                "price": 34.99,
+                "description": "Comfortable athletic shorts with modern print. Perfect for sports and casual wear. 100% Polyester",
+                "category": "men's clothing",
+                "image": "/static/final_project/Men/Shorts_With_Print/Black/Short main.jpg",
+                "rating": {"rate": 4.4, "count": 156}
+            },
+            {
+                "id": 15,
+                "title": "Men's Shorts With Print - Beige",
+                "price": 34.99,
+                "description": "Comfortable athletic shorts with modern print. Perfect for sports and casual wear. 100% Polyester",
+                "category": "men's clothing",
+                "image": "/static/final_project/Men/Shorts_With_Print/Beige/Short main.jpg",
+                "rating": {"rate": 4.4, "count": 143}
+            },
+            {
+                "id": 16,
+                "title": "Men's Shorts With Print - Navy Blue",
+                "price": 34.99,
+                "description": "Comfortable athletic shorts with modern print. Perfect for sports and casual wear. 100% Polyester",
+                "category": "men's clothing",
+                "image": "/static/final_project/Men/Shorts_With_Print/navy Blue/Short main.jpg",
+                "rating": {"rate": 4.4, "count": 138}
+            },
+            {
+                "id": 17,
+                "title": "Men's Straight Fit Shorts - Beige",
+                "price": 39.99,
+                "description": "Classic straight fit shorts for everyday comfort. Premium quality fabric. 98% Cotton 2% Spandex",
+                "category": "men's clothing",
+                "image": "/static/final_project/Men/Straight_Fit Shorts/Beige/short main.jpg",
+                "rating": {"rate": 4.5, "count": 167}
+            },
+            {
+                "id": 18,
+                "title": "Men's Straight Fit Shorts - Dark Green",
+                "price": 39.99,
+                "description": "Classic straight fit shorts for everyday comfort. Premium quality fabric. 98% Cotton 2% Spandex",
+                "category": "men's clothing",
+                "image": "/static/final_project/Men/Straight_Fit Shorts/Dark Green/short main.jpg",
+                "rating": {"rate": 4.5, "count": 152}
+            },
+            
+            # Women's Clothing
+            {
+                "id": 19,
+                "title": "Women's Cami Mini Dress - Light Blue",
+                "price": 49.99,
+                "description": "Mini dress featuring cami sleeves, an adjustable shoulder straps and open-back. 100% Polyester",
+                "category": "women's clothing",
+                "image": "/static/final_project/Lady/Cami Mini Dress/Light Blue/Dress main.jpg",
+                "rating": {"rate": 4.6, "count": 189}
+            },
+            {
+                "id": 20,
+                "title": "Women's Cami Mini Dress - White",
+                "price": 49.99,
+                "description": "Mini dress featuring cami sleeves, an adjustable shoulder straps and open-back. 100% Polyester",
+                "category": "women's clothing",
+                "image": "/static/final_project/Lady/Cami Mini Dress/white/Dress main.jpg",
+                "rating": {"rate": 4.6, "count": 201}
+            },
+            {
+                "id": 21,
+                "title": "Women's Midi Dress - Black",
+                "price": 59.99,
+                "description": "Elegant midi dress perfect for any occasion. Comfortable fit with premium fabric. 95% Polyester 5% Spandex",
+                "category": "women's clothing",
+                "image": "/static/final_project/Lady/Midi Dress/Black/Dress main.jpg",
+                "rating": {"rate": 4.7, "count": 223}
+            },
+            {
+                "id": 22,
+                "title": "Women's Midi Dress - Pink",
+                "price": 59.99,
+                "description": "Elegant midi dress perfect for any occasion. Comfortable fit with premium fabric. 95% Polyester 5% Spandex",
+                "category": "women's clothing",
+                "image": "/static/final_project/Lady/Midi Dress/Pink/Dress main.jpg",
+                "rating": {"rate": 4.7, "count": 198}
+            },
+            {
+                "id": 23,
+                "title": "Women's Crop Sweat Jacket - Black",
+                "price": 54.99,
+                "description": "Trendy cropped jacket perfect for layering. Comfortable and stylish. 80% Cotton 20% Polyester",
+                "category": "women's clothing",
+                "image": "/static/final_project/Lady/Crop Sweat Jacket/Black/Jacket main.jpg",
+                "rating": {"rate": 4.5, "count": 167}
+            },
+            {
+                "id": 24,
+                "title": "Women's Crop Sweat Jacket - White",
+                "price": 54.99,
+                "description": "Trendy cropped jacket perfect for layering. Comfortable and stylish. 80% Cotton 20% Polyester",
+                "category": "women's clothing",
+                "image": "/static/final_project/Lady/Crop Sweat Jacket/White/Jacket main.jpg",
+                "rating": {"rate": 4.5, "count": 154}
+            },
+            {
+                "id": 25,
+                "title": "Women's Cropped T-shirt With Print - Blue Wash",
+                "price": 27.99,
+                "description": "Stylish cropped t-shirt with modern print. Perfect for casual summer wear. 100% Cotton",
+                "category": "women's clothing",
+                "image": "/static/final_project/Lady/Cropped T-shirt With Print/Blue Wash/T-Shirt main.jpg",
+                "rating": {"rate": 4.3, "count": 142}
+            },
+            {
+                "id": 26,
+                "title": "Women's Cropped T-shirt With Print - Olive Green",
+                "price": 27.99,
+                "description": "Stylish cropped t-shirt with modern print. Perfect for casual summer wear. 100% Cotton",
+                "category": "women's clothing",
+                "image": "/static/final_project/Lady/Cropped T-shirt With Print/Olive Green/T-Shirt main.jpg",
+                "rating": {"rate": 4.3, "count": 135}
+            },
+            {
+                "id": 27,
+                "title": "Women's Cropped T-Shirt With Print - Navy",
+                "price": 27.99,
+                "description": "Trendy cropped t-shirt with eye-catching print design. 100% Cotton",
+                "category": "women's clothing",
+                "image": "/static/final_project/Lady/Cropped T-Shirt With Print1/navy/T-Shirt main.jpg",
+                "rating": {"rate": 4.4, "count": 128}
+            },
+            {
+                "id": 28,
+                "title": "Women's Cropped T-Shirt With Print - Red",
+                "price": 27.99,
+                "description": "Trendy cropped t-shirt with eye-catching print design. 100% Cotton",
+                "category": "women's clothing",
+                "image": "/static/final_project/Lady/Cropped T-Shirt With Print1/Red/T-Shirt main.jpg",
+                "rating": {"rate": 4.4, "count": 119}
+            },
+            {
+                "id": 29,
+                "title": "Women's Off Shoulder T-Shirt - Black",
+                "price": 32.99,
+                "description": "Chic off-shoulder t-shirt for a stylish casual look. Soft and comfortable. 95% Cotton 5% Spandex",
+                "category": "women's clothing",
+                "image": "/static/final_project/Lady/Off Shoulder T-Shirt/Black/T-Shirt main.jpg",
+                "rating": {"rate": 4.5, "count": 176}
+            },
+            {
+                "id": 30,
+                "title": "Women's Off Shoulder T-Shirt - White",
+                "price": 32.99,
+                "description": "Chic off-shoulder t-shirt for a stylish casual look. Soft and comfortable. 95% Cotton 5% Spandex",
+                "category": "women's clothing",
+                "image": "/static/final_project/Lady/Off Shoulder T-Shirt/White/T-Shirt main.jpg",
+                "rating": {"rate": 4.5, "count": 192}
+            },
+            {
+                "id": 31,
+                "title": "Women's T-Shirt With Print - Light Pink",
+                "price": 26.99,
+                "description": "Comfortable t-shirt with beautiful print. Perfect for everyday wear. 100% Cotton",
+                "category": "women's clothing",
+                "image": "/static/final_project/Lady/T-Shirt With Print/Light Pink/T-Shirt main.jpg",
+                "rating": {"rate": 4.3, "count": 158}
+            },
+            {
+                "id": 32,
+                "title": "Women's T-Shirt With Print - White",
+                "price": 26.99,
+                "description": "Comfortable t-shirt with beautiful print. Perfect for everyday wear. 100% Cotton",
+                "category": "women's clothing",
+                "image": "/static/final_project/Lady/T-Shirt With Print/White/T-Shirt main.jpg",
+                "rating": {"rate": 4.3, "count": 171}
+            },
+            {
+                "id": 33,
+                "title": "Women's Wide Leg Sweatpants - Black",
+                "price": 44.99,
+                "description": "Comfortable wide leg sweatpants with relaxed fit. Perfect for lounging or casual outings. 80% Cotton 20% Polyester",
+                "category": "women's clothing",
+                "image": "/static/final_project/Lady/Wide Leg Sweatpants/Black/Trouser (main).jpg",
+                "rating": {"rate": 4.6, "count": 204}
+            },
+            {
+                "id": 34,
+                "title": "Women's Wide Leg Sweatpants - White",
+                "price": 44.99,
+                "description": "Comfortable wide leg sweatpants with relaxed fit. Perfect for lounging or casual outings. 80% Cotton 20% Polyester",
+                "category": "women's clothing",
+                "image": "/static/final_project/Lady/Wide Leg Sweatpants/White/Trouser (main).jpg",
+                "rating": {"rate": 4.6, "count": 187}
             }
         ]
 
