@@ -159,7 +159,7 @@ class APIHelper:
                 "price": 45.99,
                 "description": "T-shirt featuring long sleeves, pocket with embroidery and crew neckline. 45% Cotton 50% Polyester 5% Spandex",
                 "category": "men's clothing",
-                "image": "/static/final_project/Men/hoody/white/hoody(main).jpg",
+                "image": "/static/final_project/Men/hoody/white/mainw.jpg",
                 "rating": {"rate": 4.5, "count": 98}
             },
             {
@@ -168,7 +168,7 @@ class APIHelper:
                 "price": 45.99,
                 "description": "T-shirt featuring long sleeves, pocket with embroidery and crew neckline. 45% Cotton 50% Polyester 5% Spandex",
                 "category": "men's clothing",
-                "image": "/static/final_project/Men/hoody/Brown/hoody(main).jpg",
+                "image": "/static/final_project/Men/hoody/Brown/mainb.jpg",
                 "rating": {"rate": 4.6, "count": 87}
             },
             {
@@ -177,7 +177,7 @@ class APIHelper:
                 "price": 29.99,
                 "description": "Regular t-shirt featuring short sleeves, with text embroidery at the front and crew neckline. 100% Polyester",
                 "category": "men's clothing",
-                "image": "/static/final_project/Men/Basketbal_T-Shirt_Wit_Print/Navy Blue/T-Shirt main.jpg",
+                "image": "/static/final_project/Men/Basketbal_T-Shirt_Wit_Print/Navy Blue/T-Shirt (3).jpg",
                 "rating": {"rate": 4.3, "count": 145}
             },
             {
@@ -186,7 +186,7 @@ class APIHelper:
                 "price": 29.99,
                 "description": "Regular t-shirt featuring short sleeves, with text embroidery at the front and crew neckline. 100% Polyester",
                 "category": "men's clothing",
-                "image": "/static/final_project/Men/Basketbal_T-Shirt_Wit_Print/Red/T-Shirt main.jpg",
+                "image": "/static/final_project/Men/Basketbal_T-Shirt_Wit_Print/Red/T-Shirt-main.jpg",
                 "rating": {"rate": 4.3, "count": 132}
             },
             {
@@ -195,7 +195,7 @@ class APIHelper:
                 "price": 24.99,
                 "description": "Regular t-shirt featuring short sleeves, with text embroidery at the front and crew neckline. 100% Polyester",
                 "category": "men's clothing",
-                "image": "/static/final_project/Men/T-Shirt/Black/T-Shirt (main).jpg",
+                "image": "/static/final_project/Men/T-Shirt/Black/T-Shirt (1main).jpg",
                 "rating": {"rate": 4.4, "count": 210}
             },
             {
@@ -204,7 +204,7 @@ class APIHelper:
                 "price": 24.99,
                 "description": "Regular t-shirt featuring short sleeves, with text embroidery at the front and crew neckline. 100% Polyester",
                 "category": "men's clothing",
-                "image": "/static/final_project/Men/T-Shirt/White/T-Shirt (main).jpg",
+                "image": "/static/final_project/Men/T-Shirt/White/T-Shirtmain .jpg",
                 "rating": {"rate": 4.4, "count": 198}
             },
             {
@@ -222,7 +222,7 @@ class APIHelper:
                 "price": 27.99,
                 "description": "Stylish t-shirt with modern print design. Perfect for casual wear. 100% Cotton",
                 "category": "men's clothing",
-                "image": "/static/final_project/Men/T-Shirt_With_Print/White/T-Shirt main.jpg",
+                "image": "/static/final_project/Men/T-Shirt_With_Print/White/main.jpg",
                 "rating": {"rate": 4.2, "count": 163}
             },
             {
@@ -231,7 +231,7 @@ class APIHelper:
                 "price": 27.99,
                 "description": "Stylish t-shirt with modern print design. Perfect for casual wear. 100% Cotton",
                 "category": "men's clothing",
-                "image": "/static/final_project/Men/T-Shirt_With_Print/light Green/T-Shirt main.jpg",
+                "image": "/static/final_project/Men/T-Shirt_With_Print/light Green/T-Shirt (5) (main).jpg",
                 "rating": {"rate": 4.2, "count": 141}
             },
             {
@@ -267,7 +267,7 @@ class APIHelper:
                 "price": 34.99,
                 "description": "Comfortable athletic shorts with modern print. Perfect for sports and casual wear. 100% Polyester",
                 "category": "men's clothing",
-                "image": "/static/final_project/Men/Shorts_With_Print/Black/Short main.jpg",
+                "image": "/static/final_project/Men/Shorts_With_Print/Black/short-main.jpg",
                 "rating": {"rate": 4.4, "count": 156}
             },
             {
@@ -276,7 +276,7 @@ class APIHelper:
                 "price": 34.99,
                 "description": "Comfortable athletic shorts with modern print. Perfect for sports and casual wear. 100% Polyester",
                 "category": "men's clothing",
-                "image": "/static/final_project/Men/Shorts_With_Print/Beige/Short main.jpg",
+                "image": "/static/final_project/Men/Shorts_With_Print/Beige/short-main.jpg",
                 "rating": {"rate": 4.4, "count": 143}
             },
             {
@@ -285,7 +285,7 @@ class APIHelper:
                 "price": 34.99,
                 "description": "Comfortable athletic shorts with modern print. Perfect for sports and casual wear. 100% Polyester",
                 "category": "men's clothing",
-                "image": "/static/final_project/Men/Shorts_With_Print/navy Blue/Short main.jpg",
+                "image": "/static/final_project/Men/Shorts_With_Print/navy Blue/short-main.jpg",
                 "rating": {"rate": 4.4, "count": 138}
             },
             {
@@ -294,7 +294,7 @@ class APIHelper:
                 "price": 39.99,
                 "description": "Classic straight fit shorts for everyday comfort. Premium quality fabric. 98% Cotton 2% Spandex",
                 "category": "men's clothing",
-                "image": "/static/final_project/Men/Straight_Fit Shorts/Beige/short main.jpg",
+                "image": "/static/final_project/Men/Straight_Fit Shorts/Beige/ss-main.jpg",
                 "rating": {"rate": 4.5, "count": 167}
             },
             {
@@ -303,7 +303,7 @@ class APIHelper:
                 "price": 39.99,
                 "description": "Classic straight fit shorts for everyday comfort. Premium quality fabric. 98% Cotton 2% Spandex",
                 "category": "men's clothing",
-                "image": "/static/final_project/Men/Straight_Fit Shorts/Dark Green/short main.jpg",
+                "image": "/static/final_project/Men/Straight_Fit Shorts/Dark Green/ss-main.jpg",
                 "rating": {"rate": 4.5, "count": 152}
             },
             
@@ -314,7 +314,7 @@ class APIHelper:
                 "price": 49.99,
                 "description": "Mini dress featuring cami sleeves, an adjustable shoulder straps and open-back. 100% Polyester",
                 "category": "women's clothing",
-                "image": "/static/final_project/Lady/Cami Mini Dress/Light Blue/Dress main.jpg",
+                "image": "/static/final_project/Lady/Cami Mini Dress/Light Blue/Mini-Dress (main).jpg",
                 "rating": {"rate": 4.6, "count": 189}
             },
             {
@@ -323,7 +323,7 @@ class APIHelper:
                 "price": 49.99,
                 "description": "Mini dress featuring cami sleeves, an adjustable shoulder straps and open-back. 100% Polyester",
                 "category": "women's clothing",
-                "image": "/static/final_project/Lady/Cami Mini Dress/white/Dress main.jpg",
+                "image": "/static/final_project/Lady/Cami Mini Dress/white/Mini-Dress (main).jpg",
                 "rating": {"rate": 4.6, "count": 201}
             },
             {
@@ -332,7 +332,7 @@ class APIHelper:
                 "price": 59.99,
                 "description": "Elegant midi dress perfect for any occasion. Comfortable fit with premium fabric. 95% Polyester 5% Spandex",
                 "category": "women's clothing",
-                "image": "/static/final_project/Lady/Midi Dress/Black/Dress main.jpg",
+                "image": "/static/final_project/Lady/Midi Dress/Black/Mini-Dress (main).jpg",
                 "rating": {"rate": 4.7, "count": 223}
             },
             {
@@ -341,7 +341,7 @@ class APIHelper:
                 "price": 59.99,
                 "description": "Elegant midi dress perfect for any occasion. Comfortable fit with premium fabric. 95% Polyester 5% Spandex",
                 "category": "women's clothing",
-                "image": "/static/final_project/Lady/Midi Dress/Pink/Dress main.jpg",
+                "image": "/static/final_project/Lady/Midi Dress/Pink/Mini-Dress (main).jpg",
                 "rating": {"rate": 4.7, "count": 198}
             },
             {
@@ -350,7 +350,7 @@ class APIHelper:
                 "price": 54.99,
                 "description": "Trendy cropped jacket perfect for layering. Comfortable and stylish. 80% Cotton 20% Polyester",
                 "category": "women's clothing",
-                "image": "/static/final_project/Lady/Crop Sweat Jacket/Black/Jacket main.jpg",
+                "image": "/static/final_project/Lady/Crop Sweat Jacket/Black/Jacket (main).jpg",
                 "rating": {"rate": 4.5, "count": 167}
             },
             {
@@ -359,7 +359,7 @@ class APIHelper:
                 "price": 54.99,
                 "description": "Trendy cropped jacket perfect for layering. Comfortable and stylish. 80% Cotton 20% Polyester",
                 "category": "women's clothing",
-                "image": "/static/final_project/Lady/Crop Sweat Jacket/White/Jacket main.jpg",
+                "image": "/static/final_project/Lady/Crop Sweat Jacket/White/Jacket (main).jpg",
                 "rating": {"rate": 4.5, "count": 154}
             },
             {
@@ -368,7 +368,7 @@ class APIHelper:
                 "price": 27.99,
                 "description": "Stylish cropped t-shirt with modern print. Perfect for casual summer wear. 100% Cotton",
                 "category": "women's clothing",
-                "image": "/static/final_project/Lady/Cropped T-shirt With Print/Blue Wash/T-Shirt main.jpg",
+                "image": "/static/final_project/Lady/Cropped T-shirt With Print/Blue Wash/Cropped-T-Shirt-With-Print (main).jpg",
                 "rating": {"rate": 4.3, "count": 142}
             },
             {
@@ -377,7 +377,7 @@ class APIHelper:
                 "price": 27.99,
                 "description": "Stylish cropped t-shirt with modern print. Perfect for casual summer wear. 100% Cotton",
                 "category": "women's clothing",
-                "image": "/static/final_project/Lady/Cropped T-shirt With Print/Olive Green/T-Shirt main.jpg",
+                "image": "/static/final_project/Lady/Cropped T-shirt With Print/Olive Green/Cropped-T-Shirt-With-Print (main).jpg",
                 "rating": {"rate": 4.3, "count": 135}
             },
             {
@@ -386,7 +386,7 @@ class APIHelper:
                 "price": 27.99,
                 "description": "Trendy cropped t-shirt with eye-catching print design. 100% Cotton",
                 "category": "women's clothing",
-                "image": "/static/final_project/Lady/Cropped T-Shirt With Print1/navy/T-Shirt main.jpg",
+                "image": "/static/final_project/Lady/Cropped T-Shirt With Print1/navy/T-Shirt (main).jpg",
                 "rating": {"rate": 4.4, "count": 128}
             },
             {
@@ -395,7 +395,7 @@ class APIHelper:
                 "price": 27.99,
                 "description": "Trendy cropped t-shirt with eye-catching print design. 100% Cotton",
                 "category": "women's clothing",
-                "image": "/static/final_project/Lady/Cropped T-Shirt With Print1/Red/T-Shirt main.jpg",
+                "image": "/static/final_project/Lady/Cropped T-Shirt With Print1/Red/T-Shirt (main).jpg",
                 "rating": {"rate": 4.4, "count": 119}
             },
             {
@@ -404,7 +404,7 @@ class APIHelper:
                 "price": 32.99,
                 "description": "Chic off-shoulder t-shirt for a stylish casual look. Soft and comfortable. 95% Cotton 5% Spandex",
                 "category": "women's clothing",
-                "image": "/static/final_project/Lady/Off Shoulder T-Shirt/Black/T-Shirt main.jpg",
+                "image": "/static/final_project/Lady/Off Shoulder T-Shirt/Black/T-Shirt (main).jpg",
                 "rating": {"rate": 4.5, "count": 176}
             },
             {
@@ -413,7 +413,7 @@ class APIHelper:
                 "price": 32.99,
                 "description": "Chic off-shoulder t-shirt for a stylish casual look. Soft and comfortable. 95% Cotton 5% Spandex",
                 "category": "women's clothing",
-                "image": "/static/final_project/Lady/Off Shoulder T-Shirt/White/T-Shirt main.jpg",
+                "image": "/static/final_project/Lady/Off Shoulder T-Shirt/White/T-Shirt (main).jpg",
                 "rating": {"rate": 4.5, "count": 192}
             },
             {
@@ -422,7 +422,7 @@ class APIHelper:
                 "price": 26.99,
                 "description": "Comfortable t-shirt with beautiful print. Perfect for everyday wear. 100% Cotton",
                 "category": "women's clothing",
-                "image": "/static/final_project/Lady/T-Shirt With Print/Light Pink/T-Shirt main.jpg",
+                "image": "/static/final_project/Lady/T-Shirt With Print/Light Pink/T-Shirt (main)-1.jpg",
                 "rating": {"rate": 4.3, "count": 158}
             },
             {
@@ -431,7 +431,7 @@ class APIHelper:
                 "price": 26.99,
                 "description": "Comfortable t-shirt with beautiful print. Perfect for everyday wear. 100% Cotton",
                 "category": "women's clothing",
-                "image": "/static/final_project/Lady/T-Shirt With Print/White/T-Shirt main.jpg",
+                "image": "/static/final_project/Lady/T-Shirt With Print/White/T-Shirt (main).jpg",
                 "rating": {"rate": 4.3, "count": 171}
             },
             {
