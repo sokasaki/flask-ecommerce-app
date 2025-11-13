@@ -9,9 +9,14 @@
 // CART STATE AND INITIALIZATION
 // ============================================================================
 
-let cart = []; // Initialize an empty cart array
+let cart = JSON.parse(localStorage.getItem("cart")) || []; // Load cart from localStorage
 const emptyCartMessage = document.getElementById("emptyCartMessage");
 const totalElement = document.querySelector(".total h4");
+
+// Save cart to localStorage
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
 
 // ============================================================================
 // CART FUNCTIONS
@@ -29,6 +34,7 @@ function addCartHome(selectedProduct) {
       selectedProduct.quantity = 1;
       cart.push(selectedProduct);
     }
+    saveCart();
     displayCart();
   } else {
     console.error("Product not found or invalid product object passed.");
@@ -91,6 +97,7 @@ function displayCart() {
 // Delete product from the cart
 function deleteItem(index) {
   cart.splice(index, 1);
+  saveCart();
   displayCart();
 }
 
