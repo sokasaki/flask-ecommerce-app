@@ -64,9 +64,7 @@ function displayCart() {
     totalItems += quantity;
     cartHtml += `
             <div class="cart-item d-flex align-items-center mb-3 pb-3 border-bottom">
-                <img src="${
-                  item.image
-                }.jpg" class="img-fluid rounded me-3" alt="${
+                <img src="${item.image}" class="img-fluid rounded me-3" alt="${
       item.title
     }" style="width: 48px; height: 48px; object-fit: cover;">
                 <div class="cart-item-details flex-grow-1">
@@ -118,9 +116,160 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Initialize display of featured products on homepage
-  displayFeaturedProducts();
-
   // Display cart on load
   displayCart();
+
+  // Initialize shop page functionality if on shop page
+  if (document.getElementById("productsContainer")) {
+    initializeShopPage();
+  }
 });
+
+// ============================================================================
+// SHOP PAGE FUNCTIONALITY
+// ============================================================================
+
+let allProducts = [];
+let currentProducts = [];
+
+function initializeShopPage() {
+  // Get products from server-rendered data
+  if (typeof shopProducts !== "undefined") {
+    allProducts = shopProducts;
+    currentProducts = [...allProducts];
+    updateResultsCount();
+  }
+
+  // Search functionality
+  const searchInput = document.getElementById("searchInput");
+  if (searchInput) {
+    searchInput.addEventListener("input", function () {
+      const searchTerm = this.value.toLowerCase();
+      if (searchTerm === "") {
+        currentProducts = [...allProducts];
+      } else {
+        currentProducts = allProducts.filter(
+          (product) =>
+            product.title.toLowerCase().includes(searchTerm) ||
+            product.category.toLowerCase().includes(searchTerm)
+        );
+      }
+      renderProducts();
+      updateResultsCount();
+    });
+  }
+
+  // Handle search form submission
+  const searchForm = document.getElementById("searchForm");
+  if (searchForm) {
+    searchForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      applyFilters();
+    });
+  }
+}
+
+// Apply filters function
+function applyFilters() {
+  const category = document.getElementById("categoryFilter").value;
+  const sort = document.getElementById("sortFilter").value;
+  const search = document.getElementById("searchInput").value;
+
+  // Show loading spinner
+  document.getElementById("loadingSpinner").classList.remove("d-none");
+
+  // Build URL with parameters
+  const params = new URLSearchParams();
+  if (category !== "all") params.append("category", category);
+  if (search) params.append("search", search);
+  if (sort !== "default") params.append("sort", sort);
+
+  // Fetch filtered products
+  fetch("/api/products/filter?" + params.toString())
+    .then((response) => response.json())
+    .then((data) => {
+      currentProducts = data;
+      renderProducts();
+      updateResultsCount();
+    })
+    .catch((error) => {
+      console.error("Error fetching filtered products:", error);
+    })
+    .finally(() => {
+      // Hide loading spinner
+      document.getElementById("loadingSpinner").classList.add("d-none");
+    });
+}
+
+// Clear filters function
+function clearFilters() {
+  document.getElementById("categoryFilter").value = "all";
+  document.getElementById("sortFilter").value = "default";
+  document.getElementById("searchInput").value = "";
+
+  // Reset to all products
+  currentProducts = [...allProducts];
+  renderProducts();
+  updateResultsCount();
+}
+
+// Render products function
+function renderProducts() {
+  const container = document.getElementById("productsContainer");
+
+  if (currentProducts.length === 0) {
+    container.innerHTML = `
+      <div class="col-12 text-center py-5">
+        <h3 class="text-muted">No products found</h3>
+        <p>Try adjusting your filters or search terms</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = currentProducts
+    .map(
+      (product) => `
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4 product-card">
+      <div class="card position-relative h-100">
+        <a href="/detail/${encodeURIComponent(
+          product.title
+        )}" class="text-decoration-none text-dark">
+          <img src="${
+            product.image
+          }" class="card-img-top" loading="lazy" alt="${
+        product.title
+      }" style="height: 250px; object-fit: cover;">
+          <div class="card-body text-center">
+            <h5 class="card-title fw-semibold text-truncate mb-1">${
+              product.title
+            }</h5>
+            <p class="card-text text-muted small mb-2">${product.category}</p>
+            <p class="card-text fw-bold fs-5 text-dark product-price">$${
+              product.price
+            }</p>
+          </div>
+        </a>
+        <div class="card-footer bg-white border-0">
+          <button type="button" class="btn btn-primary add-to-cart-btn w-100" onclick='addCartHome(${JSON.stringify(
+            product
+          )})'>
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+  `
+    )
+    .join("");
+}
+
+// Update results count
+function updateResultsCount() {
+  const resultsCount = document.getElementById("resultsCount");
+  if (resultsCount) {
+    const count = currentProducts.length;
+    const total = allProducts.length;
+    resultsCount.textContent = `Showing ${count} of ${total} products`;
+  }
+}

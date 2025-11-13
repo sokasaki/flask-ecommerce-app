@@ -7,7 +7,7 @@
     <title>Checkout - STYLELESS</title>
     <!-- Bootstrap 5 CSS via CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='final_project/image5.png') }}">
 </head>
@@ -34,44 +34,36 @@
                         <div class="card-header bg-light fw-bold">Order Summary</div>
                         <div class="card-body p-4">
                             <h5 class="fw-bold mb-4 text-center">Your Order</h5>
-                            <div class="order-items mb-3">
-                                <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
-                                    <img src="{{ url_for('static', filename='Men/hoody/Black/main.jpg') }}" alt="Black Hoodie"
-                                        style="width:56px; height:56px; object-fit:cover; border-radius:10px; margin-right:16px;">
-                                    <div class="flex-grow-1">
-                                        <div class="fw-semibold">Black Hoodie</div>
-                                        <div class="text-muted small">Qty: 1</div>
-                                    </div>
-                                    <div class="fw-bold fs-6">$35.00</div>
-                                </div>
-                                <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
-                                    <img src="{{ url_for('static', filename='Lady/Cami Mini Dress/Light Blue/Mini-Dress (main).jpg') }}"
-                                        alt="Cami Mini Dress"
-                                        style="width:56px; height:56px; object-fit:cover; border-radius:10px; margin-right:16px;">
-                                    <div class="flex-grow-1">
-                                        <div class="fw-semibold">Cami Mini Dress</div>
-                                        <div class="text-muted small">Qty: 2</div>
-                                    </div>
-                                    <div class="fw-bold fs-6">$58.00</div>
-                                </div>
+
+                            <!-- Empty cart message -->
+                            <div id="emptyCheckoutMessage" class="text-center py-4 d-none">
+                                <p class="text-muted">Your cart is empty.</p>
+                                <a href="{{ url_for('shop') }}" class="btn btn-primary mt-2">Go Shopping</a>
                             </div>
-                            <div class="order-totals">
-                                <div class="d-flex justify-content-between align-items-center py-2">
-                                    <span class="fw-semibold">Subtotal</span>
-                                    <span class="fw-bold">$93.00</span>
+
+                            <!-- Order items container -->
+                            <div id="orderItemsContainer">
+                                <div class="order-items mb-3" id="checkoutOrderItems">
+                                    <!-- Items will be dynamically inserted here -->
                                 </div>
-                                <div class="d-flex justify-content-between align-items-center py-2">
-                                    <span>Shipping</span>
-                                    <span>$5.00</span>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center py-2">
-                                    <span>Tax</span>
-                                    <span>$2.00</span>
-                                </div>
-                                <hr>
-                                <div class="d-flex justify-content-between align-items-center py-2">
-                                    <span class="fs-5 fw-bold text-dark">Total</span>
-                                    <span class="fs-5 fw-bold text-primary">$100.00</span>
+                                <div class="order-totals">
+                                    <div class="d-flex justify-content-between align-items-center py-2">
+                                        <span class="fw-semibold">Subtotal</span>
+                                        <span class="fw-bold" id="checkoutSubtotal">$0.00</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center py-2">
+                                        <span>Shipping</span>
+                                        <span id="checkoutShipping">$5.00</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center py-2">
+                                        <span>Tax</span>
+                                        <span id="checkoutTax">$2.00</span>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex justify-content-between align-items-center py-2">
+                                        <span class="fs-5 fw-bold text-dark">Total</span>
+                                        <span class="fs-5 fw-bold text-primary" id="checkoutTotal">$0.00</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -182,6 +174,62 @@
         crossorigin="anonymous"></script>
     <!-- Your custom JS -->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    <script>
+        // Function to render checkout order summary
+        function renderCheckoutSummary() {
+            const orderItemsDiv = document.getElementById('checkoutOrderItems');
+            const emptyMessage = document.getElementById('emptyCheckoutMessage');
+            const orderContainer = document.getElementById('orderItemsContainer');
+
+            if (!cart || cart.length === 0) {
+                emptyMessage.classList.remove('d-none');
+                orderContainer.classList.add('d-none');
+                return;
+            }
+
+            emptyMessage.classList.add('d-none');
+            orderContainer.classList.remove('d-none');
+
+            let itemsHtml = '';
+            let subtotal = 0;
+
+            cart.forEach((item) => {
+                const quantity = item.quantity || 1;
+                const itemTotal = item.price * quantity;
+                subtotal += itemTotal;
+
+                itemsHtml += `
+                    <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
+                        <img src="${item.image}" alt="${item.title}"
+                            style="width:56px; height:56px; object-fit:cover; border-radius:10px; margin-right:16px;">
+                        <div class="flex-grow-1">
+                            <div class="fw-semibold">${item.title}</div>
+                            <div class="text-muted small">Qty: ${quantity}</div>
+                        </div>
+                        <div class="fw-bold fs-6">$${itemTotal.toFixed(2)}</div>
+                    </div>
+                `;
+            });
+
+            orderItemsDiv.innerHTML = itemsHtml;
+
+            // Update totals
+            const shipping = subtotal > 0 ? 5.00 : 0;
+            const tax = subtotal > 0 ? 2.00 : 0;
+            const total = subtotal + shipping + tax;
+
+            document.getElementById('checkoutSubtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('checkoutShipping').textContent = `$${shipping.toFixed(2)}`;
+            document.getElementById('checkoutTax').textContent = `$${tax.toFixed(2)}`;
+            document.getElementById('checkoutTotal').textContent = `$${total.toFixed(2)}`;
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            renderCheckoutSummary();
+        });
+    </script>
 
     <!-- Footer (reuse your main footer if needed) -->
     {% include 'front/footer.html' %}
