@@ -335,7 +335,6 @@
         </div>
     </div>
 
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <!-- Footer -->
     <footer class="container-fluid py-4 footer-bg mt-5">
         <div class="container text-center">
@@ -347,6 +346,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <script>
         /* expose safe product data to JS */
         const productDetails = {{ product | tojson | safe }};
@@ -399,38 +399,45 @@
         const image = productDetails?.image || '{{ product.get("image", "") }}';
         const id = productDetails?.id || {{ product.get('id', 0) }};
 
+        // Create product object
+        const productToAdd = {
+            id: id,
+            title: title,
+            price: price,
+            image: image,
+            quantity: quantity,
+            size: size,
+            color: color
+        };
+
         // Get cart from localStorage
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let localCart = JSON.parse(localStorage.getItem('cart')) || [];
 
         // Check if product already exists in cart
-        const existingItem = cart.find(item => item.id === id && item.size === size && item.color === color);
+        const existingItem = localCart.find(item => item.id === id && item.size === size && item.color === color);
 
         if (existingItem) {
             existingItem.quantity = (existingItem.quantity || 1) + quantity;
         } else {
-            cart.push({
-                id: id,
-                title: title,
-                price: price,
-                image: image,
-                quantity: quantity,
-                size: size,
-                color: color
-            });
+            localCart.push(productToAdd);
         }
 
         // Save to localStorage
-        localStorage.setItem('cart', JSON.stringify(cart));
+        localStorage.setItem('cart', JSON.stringify(localCart));
 
-        // Update cart count
-        const cartCount = document.querySelector('.count');
-        if (cartCount) {
-            const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-            cartCount.textContent = totalItems;
+        // Update global cart variable if it exists
+        if (typeof cart !== 'undefined') {
+            cart = localCart;
         }
 
-        // Show success message
-        alert(`Added to cart:\n${title}\nSize: ${size}\nColor: ${color}\nQuantity: ${quantity}`);
+        // Update cart display (from script.js)
+        if (typeof displayCart === 'function') {
+            displayCart();
+        } else {
+            // Fallback: manually update cart count
+            const totalItems = localCart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+            document.querySelectorAll('.count').forEach(el => el.textContent = totalItems);
+        }
         }
     </script>
 </body>

@@ -46,6 +46,9 @@ function displayCart() {
   const offcanvasBody = document.querySelector(
     "#offcanvasCart .offcanvas-body"
   );
+  const viewCartBtn = document.querySelector('a[href*="cart"]');
+  const checkoutBtn = document.querySelector('a[href*="check"]');
+
   if (!offcanvasBody) {
     console.error("Offcanvas body not found.");
     return;
@@ -56,6 +59,18 @@ function displayCart() {
       '<p class="text-muted text-center" id="emptyCartMessage">Your cart is empty.</p>';
     totalElement.innerHTML = "<h4>$0.00</h4>";
     document.querySelector(".icons.count").textContent = "0";
+
+    // Disable buttons when cart is empty
+    if (viewCartBtn) {
+      viewCartBtn.classList.add("disabled");
+      viewCartBtn.style.pointerEvents = "none";
+      viewCartBtn.style.opacity = "0.5";
+    }
+    if (checkoutBtn) {
+      checkoutBtn.classList.add("disabled");
+      checkoutBtn.style.pointerEvents = "none";
+      checkoutBtn.style.opacity = "0.5";
+    }
     return;
   }
 
@@ -92,6 +107,18 @@ function displayCart() {
   offcanvasBody.innerHTML = cartHtml;
   totalElement.innerHTML = `<h4>$${totalPrice.toFixed(2)}</h4>`;
   document.querySelector(".icons.count").textContent = totalItems.toString();
+
+  // Enable buttons when cart has items
+  if (viewCartBtn) {
+    viewCartBtn.classList.remove("disabled");
+    viewCartBtn.style.pointerEvents = "auto";
+    viewCartBtn.style.opacity = "1";
+  }
+  if (checkoutBtn) {
+    checkoutBtn.classList.remove("disabled");
+    checkoutBtn.style.pointerEvents = "auto";
+    checkoutBtn.style.opacity = "1";
+  }
 }
 
 // Delete product from the cart
@@ -237,10 +264,10 @@ function renderProducts() {
 
   container.innerHTML = currentProducts
     .map(
-      (product) => `
+      (product, index) => `
     <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4 product-card">
       <div class="card position-relative h-100">
-        <a href="/detail/${encodeURIComponent(
+        <a href="/detail?name=${encodeURIComponent(
           product.title
         )}" class="text-decoration-none text-dark">
           <img src="${
@@ -259,9 +286,7 @@ function renderProducts() {
           </div>
         </a>
         <div class="card-footer bg-white border-0">
-          <button type="button" class="btn btn-primary add-to-cart-btn w-100" onclick='addCartHome(${JSON.stringify(
-            product
-          )})'>
+          <button type="button" class="btn btn-primary add-to-cart-btn w-100" data-product-index="${index}">
             Add to cart
           </button>
         </div>
@@ -270,6 +295,16 @@ function renderProducts() {
   `
     )
     .join("");
+
+  // Attach event listeners to all add-to-cart buttons
+  const addToCartButtons = container.querySelectorAll(".add-to-cart-btn");
+  addToCartButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const productIndex = parseInt(this.getAttribute("data-product-index"));
+      const product = currentProducts[productIndex];
+      addCartHome(product);
+    });
+  });
 }
 
 // Update results count
